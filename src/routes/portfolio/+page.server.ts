@@ -8,25 +8,20 @@ export async function load({ fetch }) {
     const response = await fetch(PROJECTS_URL);
     const csvText = await response.text();
 
-    // Parse the CSV text
     const parsed = Papa.parse(csvText, {
         header: true,
         dynamicTyping: true,
     });
 
-    // Cast the parsed data to our Project[] type and clean it up
     const allProjects: Project[] = (parsed.data as any[])
-.filter(p => p.slug) // Ensure we only process rows that have a slug
+.filter(p => p.slug)
         .map(p => ({
             ...p,
-            // Papaparse's dynamicTyping might miss 'TRUE'/'FALSE', so we ensure it's a boolean
             isFeatured: String(p.isFeatured).toUpperCase() === 'TRUE',
         }));
 
-    // Get all featured projects
     const featuredProjects = allProjects.filter(p => p.isFeatured);
 
-    // Get all non-featured projects, sort by date, and take the latest 10
     const latestProjects = allProjects
         .filter(p => !p.isFeatured)
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
