@@ -17,6 +17,8 @@
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tailwindcss/postcss": "^4.1.13",
+		"@types/d3": "^7.4.3",
+		"@types/p5": "^1.7.6",
 		"@types/papaparse": "^5.3.16",
 		"autoprefixer": "^10.4.21",
 		"lucide-svelte": "^0.544.0",
@@ -30,8 +32,11 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"d3": "^7.9.0",
 		"flowbite": "^3.1.2",
 		"flowbite-svelte": "^1.14.2",
-		"papaparse": "^5.5.3"
+		"p5": "^2.0.5",
+		"papaparse": "^5.5.3",
+		"scrolly-video": "^0.0.24"
 	}
 }
