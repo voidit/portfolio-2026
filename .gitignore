@@ -24,3 +24,5 @@ vite.config.ts.timestamp-*
 /.idea/
 .idea/workspace.xml
 /.idea
+/.idea
+/src/routes
