@@ -29,3 +29,4 @@ vite.config.ts.timestamp-*
 .idea/*
 /.idea
 .idea/workspace.xml
+/.idea
