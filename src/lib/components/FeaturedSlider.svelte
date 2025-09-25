@@ -1,36 +1,20 @@
 <script lang="ts">
+    import { Carousel } from 'flowbite-svelte';
     import type { Project } from '$lib/types';
 
     export let projects: Project[];
-    let current = 0;
 
-    function next() {
-        current = (current + 1) % projects.length;
-    }
-
-    function prev() {
-        current = (current - 1 + projects.length) % projects.length;
-    }
+    // We need to format the data for the Carousel component
+    const items = projects.map((p, i) => ({
+        id: i.toString(),
+        title: p.projectName,
+        img: {
+            // You'll need to add an 'imageUrl' column to your Google Sheet
+            src: p.imageUrl || `https://flowbite.s3.amazonaws.com/docs/gallery/featured/image-0${i + 1}.jpg`,
+            alt: p.projectName,
+        },
+        href: `/portfolio/${p.slug}`
+    }));
 </script>
 
-<div class="relative">
-    <div class="overflow-hidden">
-        <div class="flex transition-transform duration-500" style="transform: translateX(-{current * 100}%)">
-            {#each projects as project (project.slug)}
-                <div class="w-full flex-shrink-0">
-                    <a href={`/portfolio/${project.slug}`} class="block p-4 bg-gray-200">
-                        <h3 class="text-2xl font-bold">{project.projectName}</h3>
-                        <p>{project.overview}</p>
-                    </a>
-                </div>
-            {/each}
-        </div>
-    </div>
-
-    <button on:click={prev} class="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
-        &#10094;
-    </button>
-    <button on:click={next} class="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md">
-        &#10095;
-    </button>
-</div>
+<Carousel images={items} class="rounded-lg" />

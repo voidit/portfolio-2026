@@ -16,9 +16,12 @@
 		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/postcss": "^4.1.13",
 		"@types/papaparse": "^5.3.16",
 		"autoprefixer": "^10.4.21",
+		"lucide-svelte": "^0.544.0",
 		"postcss": "^8.5.6",
+		"postcss-load-config": "^6.0.1",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"svelte-preprocess": "^6.0.3",
@@ -27,6 +30,8 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"flowbite": "^3.1.2",
+		"flowbite-svelte": "^1.14.2",
 		"papaparse": "^5.5.3"
 	}
 }
