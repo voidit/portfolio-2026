@@ -3,15 +3,24 @@
     let hidden = true;
 </script>
 
-<Navbar class="!bg-transparent dark:!bg-transparent py-6 px-4 container mx-auto">
-    <NavBrand href="/">
-        <span class="text-2xl font-serif font-bold text-gray-900 dark:text-white">Portfolio</span>
-    </NavBrand>
+<Navbar
+        class="sticky top-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 px-4 border-b border-gray-200"
+>
+    <div class="container mx-auto flex justify-between items-center">
+        <NavBrand href="/">
+            <span class="text-3xl font-serif font-bold text-gray-900 tracking-wider">Your Name</span>
+        </NavBrand>
 
-    <NavHamburger on:click={() => (hidden = !hidden)} />
+        <NavHamburger on:click={() => (hidden = !hidden)} class="md:hidden" />
 
-    <NavUl {hidden}>
-        <NavLi href="/portfolio" class="text-base font-sans text-gray-600 hover:text-gray-900">Portfolio</NavLi>
-        <NavLi href="/about" class="text-base font-sans text-gray-600 hover:text-gray-900">About</NavLi>
-    </NavUl>
+        <NavUl
+                {hidden}
+                ulClass="p-4 md:p-0 mt-4 md:mt-0 font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse uppercase text-sm tracking-widest bg-transparent"
+        >
+            <NavLi href="/portfolio">Work</NavLi>
+            <NavLi href="/about">About</NavLi>
+            <NavLi href="/journal">Journal</NavLi>
+            <NavLi href="/contact">Contact</NavLi>
+        </NavUl>
+    </div>
 </Navbar>

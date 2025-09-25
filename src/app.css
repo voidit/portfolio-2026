@@ -1,6 +1,7 @@
-/* Add this line at the top */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+/* 1. Import the fonts first */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500&display=swap');
 
+/* 2. Then include the Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
