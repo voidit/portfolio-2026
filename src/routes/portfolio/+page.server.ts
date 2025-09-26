@@ -1,35 +1,24 @@
-import Papa from 'papaparse';
-import type { Project } from '$lib/types'; // Import the Project type
-export const prerender = true;
+import { getContent } from '$lib/server/database';
+import type { Post } from '$lib/types';
 
-const PROJECTS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTL9ADcfbcaxjsw03oJXaaORuG_1HAinhnbWNSNlvvgQm9CU8B8mvcU-jS9wwek4etGmp8bJ4Mb4v9U/pubhtml?gid=0&single=true';
+// This tells SvelteKit to pre-render this page at build time.
+export const prerender = true;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ fetch }) {
-    const response = await fetch(PROJECTS_URL);
-    const csvText = await response.text();
+    // Use the event.fetch provided by SvelteKit.
+    const allContent: Post[] = await getContent(fetch);
 
-    const parsed = Papa.parse(csvText, {
-        header: true,
-        dynamicTyping: true,
-    });
+    // Filter for 'project' posts.
+    const allProjects = allContent.filter((post) => post.postType === 'project');
 
-    const allProjects: Project[] = (parsed.data as any[])
-.filter(p => p.slug)
-        .map(p => ({
-            ...p,
-            isFeatured: String(p.isFeatured).toUpperCase() === 'TRUE',
-        }));
+    // Sort the projects by date, newest first.
+    const sortedProjects = allProjects.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
 
-    const featuredProjects = allProjects.filter(p => p.isFeatured);
-
-    const latestProjects = allProjects
-        .filter(p => !p.isFeatured)
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        .slice(0, 10);
-
+    // Return the complete list of projects.
     return {
-        featuredProjects,
-        latestProjects,
+        latestProjects: sortedProjects,
     };
 }

@@ -15,7 +15,7 @@
 
         <NavUl
                 {hidden}
-                ulClass="p-4 md:p-0 mt-4 md:mt-0 font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse uppercase text-sm tracking-widest bg-transparent"
+                class="p-4 md:p-0 mt-4 md:mt-0 font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse uppercase text-sm tracking-widest bg-transparent"
         >
             <NavLi href="/portfolio">Work</NavLi>
             <NavLi href="/about">About</NavLi>

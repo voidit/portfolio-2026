@@ -1,5 +1,5 @@
 <script lang="ts">
-	// This import is what triggers the CSS to be included in the build.
+	// This line links your stylesheet to every page
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';

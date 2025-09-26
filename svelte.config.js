@@ -1,23 +1,12 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import sveltePreprocess from 'svelte-preprocess';
-import { mdsvex } from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', '.md'],
+	extensions: ['.svelte'],
 
-	preprocess: [
-		vitePreprocess(),
-		mdsvex({
-			extensions: ['.md']
-		}),
-		// This part is essential for Tailwind to work in your Svelte files.
-		// It finds your postcss.config.cjs file.
-		sveltePreprocess({
-			postcss: true,
-		}),
-	],
+	// vitePreprocess now handles everything we need (like Tailwind) automatically.
+	preprocess: [vitePreprocess()],
 
 	kit: {
 		adapter: adapter({

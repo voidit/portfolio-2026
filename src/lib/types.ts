@@ -1,29 +1,17 @@
-// Defines the structure for a single project
-export interface Project {
+// A single interface for all content types
+export interface Post {
+    id: number;
     slug: string;
-    projectName: string;
-    isFeatured: boolean;
-    date: string; // Keep as string for simplicity, or we can convert to Date object
-    overview: string;
-    client?: string; // Optional property
-    roles?: string;
-    tools?: string;
-    process?: string;
-    sketches?: string;
-    photos?: string;
-    videos?: string;
-    outcome?: string;
-    feedback?: string;
-}
-
-// Defines the structure for a single case study
-export interface CaseStudy {
-    caseStudySlug: string;
-    projectSlug: string;
-    caseStudyName: string;
-    before?: string;
-    after?: string;
-    overview?: string;
-    process?: string;
-    outcome?: string;
+    postType: 'project' | 'case-study' | 'photo' | 'text' | 'link' | 'audio' | 'video' | 'quote';
+    title: string;
+    date: string;
+    isFeatured?: boolean;
+    tags?: string;
+    content1?: string;
+    content2?: string;
+    embedCode?: string;
+    driveFolderId?: string;
+    caseStudyFor?: number;
+    beforeImageUrl?: string;
+    afterImageUrl?: string;
 }
