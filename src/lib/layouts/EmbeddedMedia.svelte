@@ -1,15 +1,27 @@
 <script lang="ts">
-    export let src: string; // The embed URL
-    export let title: string = 'Embedded Media';
+    /**
+     * The full HTML embed code from a trusted service like YouTube or Vimeo.
+     * WARNING: Svelte does not sanitize this code.
+     * Only use embed codes from sources you trust to avoid security risks.
+     */
+    export let embedCode: string;
 </script>
 
-<div class="relative w-full overflow-hidden" style="padding-top: 56.25%;">
-    <iframe
-            {src}
-            {title}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            class="absolute top-0 left-0 w-full h-full"
-    />
+<div class="embed-container relative w-full overflow-hidden" style="padding-top: 56.25%;">
+    {@html embedCode}
 </div>
+
+<style>
+    /*
+      The :global() modifier allows us to style the raw iframe tag
+      that gets injected by the {@html} directive above.
+    */
+    .embed-container :global(iframe) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+</style>
