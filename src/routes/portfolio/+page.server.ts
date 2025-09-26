@@ -1,5 +1,6 @@
 import Papa from 'papaparse';
 import type { Project } from '$lib/types'; // Import the Project type
+export const prerender = true;
 
 const PROJECTS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTL9ADcfbcaxjsw03oJXaaORuG_1HAinhnbWNSNlvvgQm9CU8B8mvcU-jS9wwek4etGmp8bJ4Mb4v9U/pubhtml?gid=0&single=true';
 
