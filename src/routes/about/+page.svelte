@@ -5,4 +5,3 @@
         philosophy, and your creative journey.
     </p>
 </div>
-
