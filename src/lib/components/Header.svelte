@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
+    import { base } from '$app/paths'; // Import base
     let hidden = true;
 </script>
 
@@ -7,7 +8,7 @@
         class="sticky top-0 z-50 bg-white bg-opacity-80 backdrop-blur-md py-4 px-4 border-b border-gray-200"
 >
     <div class="container mx-auto flex justify-between items-center">
-        <NavBrand href="/">
+        <NavBrand href="{base}/">
             <span class="text-3xl font-serif font-bold text-gray-900 tracking-wider">Your Name</span>
         </NavBrand>
 
@@ -17,10 +18,10 @@
                 {hidden}
                 class="p-4 md:p-0 mt-4 md:mt-0 font-medium flex flex-col md:flex-row md:space-x-8 rtl:space-x-reverse uppercase text-sm tracking-widest bg-transparent"
         >
-            <NavLi href="/portfolio">Work</NavLi>
-            <NavLi href="/about">About</NavLi>
-            <NavLi href="/journal">Journal</NavLi>
-            <NavLi href="/contact">Contact</NavLi>
+            <NavLi href="{base}/portfolio">Work</NavLi>
+            <NavLi href="{base}/about">About</NavLi>
+            <NavLi href="{base}/journal">Journal</NavLi>
+            <NavLi href="{base}/contact">Contact</NavLi>
         </NavUl>
     </div>
 </Navbar>

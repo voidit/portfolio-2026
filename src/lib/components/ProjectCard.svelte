@@ -1,10 +1,11 @@
 // src/lib/components/ProjectCard.svelte
 <script lang="ts">
     import type { Post } from '$lib/types';
+    import { base } from '$app/paths'; // Import base
     export let project: Post;
 </script>
 
-<a href={`/portfolio/${project.slug}`} class="group relative block overflow-hidden">
+<a href="{base}/portfolio/{project.slug}" class="group relative block overflow-hidden">
     <img
             src={project.imageUrl || 'https://via.placeholder.com/600x800'}
             alt={project.title}
