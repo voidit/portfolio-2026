@@ -1,4 +1,4 @@
-// A single interface for all content types
+// src/lib/types.ts
 export interface Post {
     id: number;
     slug: string;
@@ -14,4 +14,5 @@ export interface Post {
     caseStudyFor?: number;
     beforeImageUrl?: string;
     afterImageUrl?: string;
+    imageUrl?: string; // Add this line
 }
